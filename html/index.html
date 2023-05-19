@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <title>Exemplo de incorporação do Power BI</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://microsoft.github.io/PowerBI-JavaScript/dist/powerbi.min.js"></script>
+    <style>
+        .trocar-pagina-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Substitua o 'COLE AQUI O SEU CÓDIGO DE INCORPORAÇÃO' pelo código que você copiou do Power BI -->
+    <div class="powerbi-container">
+        <iframe class="powerbi-embed" src="https://app.powerbi.com/reportEmbed?reportId=5de5f679-04c6-4871-bcfb-8427b07cb1bc&autoAuth=true&ctid=39209efc-07da-4b5e-8936-7a30716f2d0f" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+    <div>
+        <a href="pag2.html#div1" class=""></a>
+        <a href="pag2.html#div2" class=""></a>
+    </div>
+
+    <!-- Inicialize o Power BI -->
+    <script>
+        var report;
+        window.onload = function() {
+            var embedConfig = {
+                type: 'report',
+                id: 'ID_DO_RELATÓRIO',
+                embedUrl: 'https://app.powerbi.com/reportEmbed?reportId=5de5f679-04c6-4871-bcfb-8427b07cb1bc&autoAuth=true&ctid=39209efc-07da-4b5e-8936-7a30716f2d0f',
+                tokenType: powerbi.models.TokenType.Aad,
+                accessToken: 'SEU_ACCESS_TOKEN'
+            };
+
+            var reportContainer = document.querySelector('.powerbi-embed');
+            report = powerbi.embed(reportContainer, embedConfig);
+        };
+
+        function trocarPagina() {
+            window.location.href = 'pag2.html';
+        }
+    </script>
+
+    <script src="https://microsoft.github.io/PowerBI-JavaScript/interfaces/models/index.d.ts"></script>
+
+    <!-- Botão para trocar de página -->
+    <button class="trocar-pagina-button" onclick="trocarPagina()">FECHAMENTO</button>
+
+    <!-- Rodapé -->
+    <div class="footer">
+        DESENVOLVIDO POR VINICIUS S MOLINA
+    </div>
+</body>
+</html>
